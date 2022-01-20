@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+  background-color: white;
+}
+
+h1 {
+  color: blue;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 10px;
+}
+
+
+table {
+  border-collapse: collapse;
+  border: 0px solid black;
+}
+</style>
+
+
+
+
+<script>
+
+
+class ClassPeca {
+      
+      constructor(nro, tipo) {
+         this.pontos      = 0;
+         this.nroPeca     = nro;
+         this.selecionada = 0;
+         this.eliminada   = false;
+      
+         switch(tipo) {
+         
+         case 1:
+             /*
+              1  1
+              1  1
+             */
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.pontos = 4;
+            break;
+             
+
+         case 2:
+             /*
+              0  1
+              1  1
+             */                           
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.pontos = 3;
+            break;
+            
+         case 3:
+             /*
+              1  1
+              1  0
+             */          
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+ 
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][1] = 0;
+            this.pontos = 3;
+            break;
+
+            
+         case 4:
+             /*
+              1  0
+              1  1
+             */ 
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+            
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][1] = 0;
+            this.pontos = 3;
+            break;
+
+         case 5:
+             /*
+              1  1
+              0  1
+             */          
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+              
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][0] = 0;
+            this.pontos = 3;
+            break;
+
+         case 6:
+             /*
+              0  0  1
+              0  0  1
+              1  1  1
+             */ 
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+ 
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.matriz[1][1] = 0;
+            this.matriz[0][1] = 0;
+            this.matriz[1][0] = 0;
+            this.pontos = 5;
+            break;
+
+         case 7:
+             /*
+              1  1  1
+              0  0  1
+              0  0  1
+             */
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+ 
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][0] = 0;
+            this.matriz[1][1] = 0;
+            this.matriz[2][0] = 0;
+            this.matriz[2][1] = 0;
+            this.pontos = 5;
+            break;
+
+         case 8:
+             /*
+              1  1  1
+              1  0  0
+              1  0  0
+             */             
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][1] = 0;
+            this.matriz[1][2] = 0;
+            this.matriz[2][1] = 0;
+            this.matriz[2][2] = 0;
+            this.pontos = 5;
+            break;
+
+         case 9:
+             /*
+              1  0  0
+              1  0  0
+              1  1  1
+             */
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][1] = 0;
+            this.matriz[1][1] = 0;
+            this.matriz[0][2] = 0;
+            this.matriz[1][2] = 0;
+            this.pontos = 5;
+            break;
+            
+          case 10:
+              /*
+              0  1  0
+              0  1  0
+              1  1  1
+             */            
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.matriz[1][0] = 0;
+            this.matriz[0][2] = 0;
+            this.matriz[1][2] = 0;
+            this.pontos = 5;
+            break;           
+
+          case 11:
+             /*
+              1  1  1
+              0  1  0
+              0  1  0
+             */             
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][0] = 0;
+            this.matriz[2][0] = 0;
+            this.matriz[1][2] = 0;
+            this.matriz[2][2] = 0;
+            this.pontos = 5;
+            break;           
+
+          case 12:
+              /*
+              1  0  0
+              0  1  0
+              0  0  1
+             */         
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 0;
+              }  
+            }
+            this.matriz[0][0] = 1;
+            this.matriz[1][1] = 1;
+            this.matriz[2][2] = 1;
+            this.pontos = 3;
+            break;           
+
+          case 13:
+               /*
+              0  0  1
+              0  1  0
+              1  0  0
+             */            
+             this.maxRow = 3;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 0;
+              }  
+            }
+            this.matriz[0][2] = 1;
+            this.matriz[1][1] = 1;
+            this.matriz[2][0] = 1;
+            this.pontos = 3;
+            break;           
+
+
+          case 14:
+              /*
+              1  0  
+              1  0  
+              1  1  
+             */             
+             this.maxRow = 3;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][1] = 0;
+            this.matriz[1][1] = 0;
+            this.pontos = 4;
+            break; 
+
+          case 15:
+              /*
+              0  1  
+              0  1  
+              1  1  
+             */             
+             this.maxRow = 3;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.matriz[1][0] = 0;
+            this.pontos = 4;
+            break; 
+
+          case 16:
+              /*
+              1  1  
+              0  1  
+              0  1  
+             */             
+             this.maxRow = 3;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][0] = 0;
+            this.matriz[2][0] = 0;
+            this.pontos = 4;
+            break; 
+            
+          case 17:
+               /*
+              1  1  
+              1  0  
+              1  0  
+             */            
+             this.maxRow = 3;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][1] = 0;
+            this.matriz[2][1] = 0;
+            this.pontos = 4;
+            break; 
+
+          case 18:
+             /*
+              0  0  1
+              1  1  1  
+             */            
+             this.maxRow = 2;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.matriz[0][1] = 0;
+            this.pontos = 4;
+            break; 
+
+          case 19:
+             /*
+              1  1  1
+              0  0  1  
+             */              
+             this.maxRow = 2;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][0] = 0;
+            this.matriz[1][1] = 0;
+            this.pontos = 4;
+            break; 
+
+
+          case 20:
+            /*
+              1  0  0
+              1  1  1  
+             */             
+             this.maxRow = 2;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][1] = 0;
+            this.matriz[0][2] = 0;
+            this.pontos = 4;
+            break; 
+
+
+          case 21:
+             /*
+              1  1  1
+              1  0  0  
+             */             
+             this.maxRow = 2;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][1] = 0;
+            this.matriz[1][2] = 0;
+            this.pontos = 4;
+            break; 
+
+          case 22:
+             /*
+              0  1  1
+              1  1  0  
+             */             
+             this.maxRow = 2;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.matriz[1][2] = 0;
+            this.pontos = 4;
+            break; 
+
+          case 23:
+             /*
+              1  1  0
+              0  1  1  
+             */             
+             this.maxRow = 2;
+             this.maxCol = 3;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[1][0] = 0;
+            this.matriz[0][2] = 0;
+            this.pontos = 4;
+            break; 
+            
+           case 24:
+             /*
+              0  1  
+              1  1  
+              1  0
+             */              
+             this.maxRow = 3;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][0] = 0;
+            this.matriz[2][1] = 0;
+            this.pontos = 4;
+            break;            
+
+           case 25:
+             /*
+              1  0  
+              1  1  
+              0  1
+             */             
+             this.maxRow = 3;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.matriz[0][1] = 0;
+            this.matriz[2][0] = 0;
+            this.pontos = 4;
+            break; 
+            
+ 
+           case 26:
+              /*
+              1  0  
+              0  1  
+             */       
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 0;
+              }  
+            }
+            this.matriz[0][0] = 1;
+            this.matriz[1][1] = 1;
+            this.pontos = 2;
+            break;           
+
+          case 27:
+               /*
+              0  1  
+              1  0  
+             */            
+             this.maxRow = 2;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 0;
+              }  
+            }
+            this.matriz[0][1] = 1;
+            this.matriz[1][0] = 1;
+            this.pontos = 2;
+            break;           
+
+          case 28:
+               /*
+              1    
+              1    
+             */            
+             this.maxRow = 2;
+             this.maxCol = 1;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.pontos = 2;
+            break;           
+
+          case 29:
+               /*
+              1  1    
+             */            
+             this.maxRow = 1;
+             this.maxCol = 2;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }
+            this.pontos = 2;
+            break;           
+  
+ 
+            
+         default:
+             
+             this.maxRow = 1;
+             this.maxCol = 1;
+             this.matriz = new Array(this.maxRow);
+             for (var i = 0; i < this.maxRow; i++) {
+                this.matriz[i] = new Array(this.maxCol);
+             }
+
+            for (let i = 0; i < this.maxRow; i++) {
+              for (let j = 0; j < this.maxCol; j++) {
+                 this.matriz[i][j] = 1;
+              }  
+            }   
+            this.pontos = 1;
+            break;
+         }
+
+     }
+     
+     displayPeca() {
+		
+        if (this.eliminada)
+           return this.displayPecaEliminada();
+        
+		var xTable = "<table  style='border:"+this.selecionada+"px solid black; border-collapse: collapse;' >";
+		
+		for (let i = 0; i < this.maxRow; i++) {
+                xTable += "<tr >";
+				for (let j = 0; j < this.maxCol; j++) {
+				        if (this.getLugarPeca( i, j) > 0)
+                               xTable += "<td>"+  this.getImagemAzul(i,j)+"</td>";
+                        else
+                               xTable += "<td> "+  this.getImagemCinza(i,j)+"</td>";
+				}
+				xTable += "</tr>";
+        }
+        xTable +=	 "</table>";
+        return xTable;        
+    }
+  
+     displayPecaEliminada() {
+		
+		var xTable = "<table  style='border:"+this.selecionada+"px solid black; border-collapse: collapse;' >";
+		
+		for (let i = 0; i < this.maxRow; i++) {
+                xTable += "<tr >";
+				for (let j = 0; j < this.maxCol; j++) {
+				        if (this.getLugarPeca( i, j) > 0)
+                               xTable += "<td>"+  this.getImagemCeleste(i,j)+"</td>";
+                        else
+                               xTable += "<td> "+  this.getImagemCinza(i,j)+"</td>";
+				}
+				xTable += "</tr>";
+        }
+        xTable +=	 "</table>";
+        return xTable;        
+    }  
+  
+     getPontos(){
+       return this.pontos;
+     }
+     
+     getLugarPeca(posLinha,posCol)     {
+       return this.matriz[posLinha][posCol]; 
+     }
+     
+     getLugarOcupado(posLinha,posCol)     {
+       
+       if (  posLinha < 0 || posLinha > this.maxRow ) return false;
+       if (  posCol   < 0 || posCol   > this.maxCol ) return false;
+
+        document.getElementById("mensagem2").innerHTML = "pos Peça: "+ posLinha+"-"+posCol;
+        return this.matriz[posLinha][posCol] == 1;
+
+     }
+     
+
+      getImagemAzul(row,col)     {
+        return "<img src='https://re-mm-assets.s3.amazonaws.com/product_photo/46485/large_large_Poly_RoyalBlue_3_2935U_1471509912.jpg' style='width:30px;height:30px;' onclick='pecaClick("+this.nroPeca+")' >";
+     }
+     
+      getImagemCeleste(row,col)     {
+        return "<img src='https://i.pinimg.com/originals/0e/63/38/0e63383bab52979f577bb8d9a12f3f12.jpg' style='width:30px;height:30px;' onclick='pecaClick("+this.nroPeca+")' >";
+     }     
+     
+      getImagemCinza(row,col)     {
+        return "<img src='https://images.squarespace-cdn.com/content/v1/55a6aa0ee4b06d4dd530f433/1520897868706-13F83MO4FT23B1RIX70K/light+gray+square.png?format=2500w' style='width:30px;height:30px;' onclick='pecaClick("+this.nroPeca+")' >";
+     }
+     
+     
+}
+
+
+
+
+
+
+class ClassTabuleiro {
+     
+
+    constructor() {
+       this.TAB_DISPONIVEL = 0;
+       this.TAB_OCUPADO    = 1;
+       this.TAB_PREVISUAL  = 2;
+       this.TAB_PREELIMINA = 3;
+       this.TOTAL_LINHAS_COLUNAS = 9;
+    
+       this.pontuacao          = 0;
+       this.jogada             = 1;
+       this.tabuleiro          = new Array(this.TOTAL_LINHAS_COLUNAS);
+       this.tabuleiroAvaliacao = new Array(this.TOTAL_LINHAS_COLUNAS);
+       
+       for (var i = 0; i < 9; i++) {
+          this.tabuleiro[i]          = new Array(this.TOTAL_LINHAS_COLUNAS);
+          this.tabuleiroAvaliacao[i] = new Array(this.TOTAL_LINHAS_COLUNAS);
+       }
+
+      for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+        for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+           this.tabuleiro[i][j]          = this.TAB_DISPONIVEL;
+           this.tabuleiroAvaliacao[i][j] = this.TAB_DISPONIVEL;
+        }  
+      }
+      this.tabuleiro[4][4] = this.TAB_OCUPADO;
+   }
+   
+   
+   
+
+  
+    /*-------------------------------------------------------------*/
+   
+   
+   displayTabuleiro() {
+		
+		var xTable = "<table   >";
+        
+		for (let i = 0; i < 3; i++) {
+                xTable += "<tr >";
+				for (let j = 0; j < 3; j++) {
+                    if ( ((i + j ) % 2) == 0)
+				        xTable += " <td width='90' >"+this.displayQuadranteTabuleiroPar(i,j)+"</td>";
+                    else
+                        xTable += " <td width='90' >"+this.displayQuadranteTabuleiroImPar(i,j)+"</td>";
+				}
+				xTable += "</tr>";
+        }
+        xTable +=	 "</table>";
+        return xTable;        
+    } 
+    
+   
+   displayQuadranteTabuleiroPar(iQuad,jQuad) {
+		
+		var xTable = "<table style='border: 1px solid black; border-collapse: collapse;' ><tr><td>";
+		var posRow = 0;
+        var posCol = 0;
+        var valor  = 0;
+
+		for (let i = 0; i < 3; i++) {
+                xTable += " <nobr>";
+				for (let j = 0; j < 3; j++) { 
+                        posRow = iQuad *3 + i;
+                        posCol = jQuad *3 + j;
+                        valor  = this.getLugarTabuleiro(posRow,posCol);
+                        switch(valor) {
+                            case this.TAB_OCUPADO:
+                                xTable += " "+ this.getImagemAzul(posRow,posCol);
+                                break;
+                            case this.TAB_PREVISUAL:
+                                 xTable += " "+ this.getImagemVerde(posRow,posCol);
+                                break;                           
+                            case this.TAB_PREELIMINA:
+                                xTable += " "+ this.getImagemVerdeClaro(posRow,posCol);
+                                break;
+                            case this.TAB_DISPONIVEL:
+                            default:
+                                xTable += " "+  this.getImagemCinza(posRow,posCol);
+                                break;
+                         }                        
+
+                 }
+                 xTable += "</nobr></br>";
+        }
+        xTable +=	 "</td></tr></table>";
+        return xTable;
+
+    }
+    
+   displayQuadranteTabuleiroImPar(iQuad,jQuad) {
+		
+		var xTable = "<table style='border: 1px solid black; border-collapse: collapse;' ><tr><td>";
+	    var posRow = 0;
+        var posCol = 0;
+        var valor  = 0;
+		for (let i = 0; i < 3; i++) {
+             xTable += " <nobr>";
+			 for (let j = 0; j < 3; j++) {  
+                  posRow = iQuad *3 + i;
+                  posCol = jQuad *3 + j;
+                  valor  = this.getLugarTabuleiro(posRow,posCol);
+                  switch(valor) {
+                    case this.TAB_OCUPADO:
+                        xTable += " "+ this.getImagemAzul(posRow,posCol);
+                        break;
+                    case this.TAB_PREVISUAL:
+                         xTable += " "+ this.getImagemVerde(posRow,posCol);
+                         break;
+                    case this.TAB_PREELIMINA:
+                        xTable += " "+ this.getImagemVerdeClaro(posRow,posCol);
+                        break;
+                    case this.TAB_DISPONIVEL:  
+                    default:
+                        xTable += " "+  this.getImagemCeleste(posRow,posCol);
+                        break;
+                    }                  
+              }
+              xTable += "</nobr></br>";
+        }
+        xTable +=	 "</td></tr></table>";
+        return xTable;
+
+    }     
+
+     getImagemAzul(row,col)
+     {
+        return "<img src='https://re-mm-assets.s3.amazonaws.com/product_photo/46485/large_large_Poly_RoyalBlue_3_2935U_1471509912.jpg' style='width:30px;height:30px;'  onclick='funcClick("+row+","+col+")' onmousemove='displayTabuleiroPeca("+row+","+col+")' >";
+     }
+     
+      getImagemCinza(row,col)
+     {
+        return "<img src='https://images.squarespace-cdn.com/content/v1/55a6aa0ee4b06d4dd530f433/1520897868706-13F83MO4FT23B1RIX70K/light+gray+square.png?format=2500w' style='width:30px;height:30px;'  onclick='funcClick("+row+","+col+")' onmousemove='displayTabuleiroPeca("+row+","+col+")'>";
+     }
+     
+     getImagemCeleste(row,col)
+     {
+        return "<img src='https://i.pinimg.com/originals/0e/63/38/0e63383bab52979f577bb8d9a12f3f12.jpg' style='width:30px;height:30px;'  onclick='funcClick("+row+","+col+")' onmousemove='displayTabuleiroPeca("+row+","+col+")'>";
+     }
+     
+     getImagemVerdeClaro(row,col)
+     {
+        return "<img src='https://madeirasgasometro.vteximg.com.br/arquivos/ids/175491-490-490/PP516-Verde-Claro---TX.jpg?v=637412390443500000' style='width:30px;height:30px;'  onclick='funcClick("+row+","+col+")' onmousemove='displayTabuleiroPeca("+row+","+col+")'  >";
+     }     
+
+     getImagemVerde(row,col)
+     {
+        return "<img src='https://28.cdn.ekm.net/ekmps/shops/simplycoatings2/images/yester-30-matt-powder-coating-20kg-box--1609-p.jpg?v=1' style='width:30px;height:30px;'  onclick='funcClick("+row+","+col+")' onmousemove='displayTabuleiroPeca("+row+","+col+")'  >";
+     }  
+    /*-------------------------------------------------------------*/
+   
+  
+    
+     getEstaDisponivel(posLinha,posCol){
+        return (this.tabuleiro[posLinha][posCol] == this.TAB_DISPONIVEL);    
+     }
+   
+     getLugarTabuleiro(posLinha,posCol)    {
+       return this.tabuleiro[posLinha][posCol]; 
+     }
+     
+     getPontos(){
+       return this.pontuacao;
+     }
+     
+     colocaPeca(posLinha,posCol,peca) {
+       
+       if (!this.esPosibleColocaPeca(posLinha,posCol,peca))
+          return;
+       
+       for (let i = 0; i < peca.maxRow; i++) {
+           for (let j = 0; j < peca.maxCol; j++) { 
+               if (this.getEstaDisponivel(posLinha +i,j + posCol) && peca.getLugarOcupado(i,j) )
+                   this.tabuleiro[posLinha +i][j + posCol] = this.TAB_OCUPADO;
+           }
+       }
+       this.pontuacao += peca.getPontos();
+       this.jogada++;
+       this.limpaEspacosCheios();
+       return;
+     }
+
+     clonaTabuleiro(TabuleiroOrigem) {
+        
+        for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+           for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+              this.tabuleiro[i][j] = TabuleiroOrigem.tabuleiro[i][j];
+        }  
+      }
+     }
+
+     colocaMarcaPeca(posLinha,posCol,peca) {
+       
+       if (!this.esPosibleColocaPeca(posLinha,posCol,peca))
+          return;
+       
+       for (let i = 0; i < peca.maxRow; i++) {
+           for (let j = 0; j < peca.maxCol; j++) { 
+               if (this.getEstaDisponivel(posLinha +i,j + posCol) && peca.getLugarOcupado(i,j) )
+                   this.tabuleiro[posLinha +i][j + posCol] = this.TAB_PREVISUAL;
+           }
+       }
+       this.marcaEspacosCheios();
+       return;
+     }
+     
+     
+     marcaEspacosCheios() {
+
+       for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+          for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+             this.tabuleiroAvaliacao[i][j] = this.tabuleiro[i][j];
+          }  
+       }
+
+       for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+          if (this.totalOcupadoLinha(this.tabuleiroAvaliacao,i) == this.TOTAL_LINHAS_COLUNAS) {
+            this.disponibilizaLinha(i,this.TAB_PREELIMINA);
+          }
+       }
+ 
+       for (let j = 0; j < 9; j++) {
+          if (this.totalOcupadoColuna(this.tabuleiroAvaliacao,j) == this.TOTAL_LINHAS_COLUNAS) {
+            this.disponibilizaColuna(j,this.TAB_PREELIMINA);
+          }
+       } 
+       
+       for (let i = 0; i < 3; i++) {
+           	for (let j = 0; j < 3; j++) {
+                 if (this.totalOcupadoQuadrante(this.tabuleiroAvaliacao,i,j) == this.TOTAL_LINHAS_COLUNAS) {
+                     this.disponibilizaQuadrante(i,j,this.TAB_PREELIMINA); 
+				}
+			}	
+        }
+ 
+     }
+
+     
+     
+     
+
+     limpaEspacosCheios() {
+
+       for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+          for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+             this.tabuleiroAvaliacao[i][j] = this.tabuleiro[i][j];
+          }  
+       }
+
+       for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+          if (this.totalOcupadoLinha(this.tabuleiroAvaliacao,i) == this.TOTAL_LINHAS_COLUNAS) {
+            this.disponibilizaLinha(i,this.TAB_DISPONIVEL);
+            this.pontuacao += this.TOTAL_LINHAS_COLUNAS;
+          }
+       }
+ 
+       for (let j = 0; j < 9; j++) {
+          if (this.totalOcupadoColuna(this.tabuleiroAvaliacao,j) == this.TOTAL_LINHAS_COLUNAS) {
+            this.disponibilizaColuna(j,this.TAB_DISPONIVEL);
+            this.pontuacao += this.TOTAL_LINHAS_COLUNAS;
+          }
+       } 
+       
+       for (let i = 0; i < 3; i++) {
+           	for (let j = 0; j < 3; j++) {
+                 if (this.totalOcupadoQuadrante(this.tabuleiroAvaliacao,i,j) == this.TOTAL_LINHAS_COLUNAS) {
+                     this.disponibilizaQuadrante(i,j,this.TAB_DISPONIVEL); 
+                     this.pontuacao += this.TOTAL_LINHAS_COLUNAS;
+				}
+			}	
+        }
+ 
+     }
+     
+     
+     totalOcupadoLinha(newTabuleiro,posLinha) {
+        let soma = 0;
+        for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+             if (newTabuleiro[posLinha][j] != this.TAB_DISPONIVEL)
+                soma++;
+       }  
+       return soma;
+     }
+ 
+     
+     totalOcupadoColuna(newTabuleiro,posColuna) {
+        let soma = 0;
+        for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+              if (newTabuleiro[i][posColuna] != this.TAB_DISPONIVEL)
+                 soma++;            
+       }  
+       return soma;
+     } 
+ 
+     totalOcupadoQuadrante(newTabuleiro,posLinha,posColuna) {
+        let soma = 0;
+        for (let i = 0; i < 3; i++) {
+             for (let j = 0; j < 3; j++) {
+                    if (newTabuleiro[(posLinha*3+i)][ (posColuna*3+j)] != this.TAB_DISPONIVEL)
+                        soma++;  
+             }
+       }  
+       return soma;
+     } 
+  
+ 
+ 
+     disponibilizaLinha(posLinha, valor) {
+
+        for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+           if (this.tabuleiro[posLinha][j] == this.TAB_OCUPADO)
+               this.tabuleiro[posLinha][j] = valor;
+       }  
+       return;
+     }
+
+     disponibilizaColuna(posColuna, valor) {
+
+       for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+           if (this.tabuleiro[i][posColuna] == this.TAB_OCUPADO)
+             this.tabuleiro[i][posColuna] = valor;
+       }  
+       return;
+     }
+     
+     disponibilizaQuadrante(posLinha,posColuna, valor) {
+
+        for (let i = 0; i < 3; i++) {
+             for (let j = 0; j < 3; j++) {
+               if (this.tabuleiro[(posLinha*3+i)][(posColuna*3+j)] == this.TAB_OCUPADO)
+                 this.tabuleiro[(posLinha*3+i)][(posColuna*3+j)] = valor;
+             }
+       } 
+       return;
+     }
+
+     numeroJogada() {
+        return this.jogada;
+     }
+
+     getOcupacao() {
+
+        let soma = 0;
+        for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+             for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) {
+                 if (this.tabuleiro[i][j] == this.TAB_DISPONIVEL)
+                       soma++;
+             }
+       } 
+       return 100* (soma/(this.TOTAL_LINHAS_COLUNAS * this.TOTAL_LINHAS_COLUNAS)).toPrecision(2);
+     }
+
+
+     esPosibleColocaPeca(posLinha,posCol,peca) {
+       
+       if (posLinha + peca.maxRow > this.TOTAL_LINHAS_COLUNAS)
+           return false;
+           
+       if (posCol + peca.maxCol > this.TOTAL_LINHAS_COLUNAS)
+           return false;
+           
+       for (let i = 0; i < peca.maxRow; i++) {
+           for (let j = 0; j < peca.maxCol; j++) { 
+               if (peca.getLugarOcupado(i,j)) {
+                  if (this.getEstaDisponivel(posLinha +i,j + posCol) == false)
+                     return false;
+               }
+           }
+       }
+       return true;
+     }
+
+     cabeEstaPeca(peca) {
+     
+        let totalVezes = 0;
+        for (let i = 0; i < this.TOTAL_LINHAS_COLUNAS; i++) {
+           for (let j = 0; j < this.TOTAL_LINHAS_COLUNAS; j++) { 
+               if (this.esPosibleColocaPeca(i,j,peca)) {
+                  totalVezes++;
+               }
+           }
+        }
+        return totalVezes;
+     }
+
+
+
+   
+
+     
+
+
+     
+}
+
+
+
+
+</script>
+
+</head>
+<body>
+
+<h1>Blockdoku</h1>
+
+<table border =0>
+	<tr> 
+        <td  colspan="3" > <p id="pontuacao">Jogo</p><p id="tabuleiro"></p><p></p> </td>
+        <td  > <p id="mensagemAcompanhamento"></p><p id="tabuleiroVisual"></p><p></p> </td>
+	 </tr>	
+	<tr> 
+    <td > <p id="mensagem"></p> </td><td > <p id="mensagem2">hh</p> </td>
+	</tr>	
+  <tr> 
+    <td width='120' > <p id="peca1"></p> </td>
+    <td width='120' > <p id="peca2"></p> </td>
+    <td width='120' > <p id="peca3"></p> </td>
+    <td  > </td>
+  </tr>
+    
+</table>
+<script>
+
+
+const tabuleiro = new Array(9);
+var cont = 0;
+
+let myTabuleiro = new ClassTabuleiro();
+let myPeca1 = new ClassPeca(1,Math.floor(Math.random() * 30));
+let myPeca2 = new ClassPeca(2,Math.floor(Math.random() * 30));
+let myPeca3 = new ClassPeca(3,Math.floor(Math.random() * 30));
+let nroPeca = 0;
+let myPeca  = myPeca1;
+
+
+  document.getElementById("tabuleiro").innerHTML = myTabuleiro. displayTabuleiro();
+  document.getElementById("pontuacao").innerHTML = "Jogada ["+ myTabuleiro.numeroJogada()+"] Pontos [" + myTabuleiro.getPontos() + "] Ocupação = "+ myTabuleiro.getOcupacao() +"%";
+  document.getElementById("peca1").innerHTML = myPeca1.displayPeca();
+  document.getElementById("peca2").innerHTML = myPeca2.displayPeca();
+  document.getElementById("peca3").innerHTML = myPeca3.displayPeca();
+  document.getElementById("mensagem").innerHTML = "Escolha um peça";
+
+  
+  function funcClick(i,j){
+
+
+      if (nroPeca > 0) {
+          if (myTabuleiro.esPosibleColocaPeca(i,j,myPeca)) {
+             myTabuleiro.colocaPeca(i,j,myPeca);
+             
+             switch(nroPeca) {
+                case 1:              
+                    myPeca1 = new ClassPeca(1, Math.floor(Math.random() * 30));
+                    break;
+                case 2:
+                    myPeca2 = new ClassPeca(2, Math.floor(Math.random() * 30));
+                    break;           
+                case 3:
+                    myPeca3 = new ClassPeca(3, Math.floor(Math.random() * 30));
+                    break;  
+              }
+             nroPeca = 0;
+             document.getElementById("tabuleiro").innerHTML = myTabuleiro.displayTabuleiro();
+             document.getElementById("pontuacao").innerHTML = "Jogada ["+ myTabuleiro.numeroJogada()+"] Pontos [" + myTabuleiro.getPontos() + "] Ocupação = "+ myTabuleiro.getOcupacao() +"%";
+             document.getElementById("peca1").innerHTML = myPeca1.displayPeca();
+             document.getElementById("peca2").innerHTML = myPeca2.displayPeca();
+             document.getElementById("peca3").innerHTML = myPeca3.displayPeca();
+             document.getElementById("mensagem").innerHTML = "peça inserida";
+             if (myTabuleiro.cabeEstaPeca(myPeca1)== 0 && myTabuleiro.cabeEstaPeca(myPeca2)== 0 && myTabuleiro.cabeEstaPeca(myPeca3)== 0 )  {
+                       document.getElementById("mensagem").innerHTML = "Fim de Jogo";
+             }
+          }
+          else {
+             if (myTabuleiro.cabeEstaPeca(myPeca1)== 0 && myTabuleiro.cabeEstaPeca(myPeca2)== 0 && myTabuleiro.cabeEstaPeca(myPeca3)== 0 )  {
+                       document.getElementById("mensagem").innerHTML = "Fim de Jogo";
+             } else {
+                  document.getElementById("mensagem").innerHTML = "peça não inserida";
+             }
+             
+          }
+      }
+      else{
+        document.getElementById("mensagem").innerHTML = "Escolha um peça";
+      }
+  }
+  
+  
+  function displayTabuleiro() {
+     document.getElementById("tabuleiro").innerHTML = myTabuleiro.displayTabuleiro();
+     
+  }
+
+  function displayTabuleiroPeca(lin,col) {
+     
+     if (nroPeca > 0) {
+        let TabuleiroOrigem = new ClassTabuleiro();
+        TabuleiroOrigem.clonaTabuleiro(myTabuleiro);
+        TabuleiroOrigem.colocaMarcaPeca(lin,col,myPeca);
+        document.getElementById("tabuleiro").innerHTML = TabuleiroOrigem.displayTabuleiro();
+     }
+     else
+        document.getElementById("tabuleiro").innerHTML = myTabuleiro.displayTabuleiro();
+  }
+  
+  
+  
+  function pecaClick(i){  
+
+      if (myTabuleiro.cabeEstaPeca(myPeca1)== 0 && 
+          myTabuleiro.cabeEstaPeca(myPeca2)== 0 &&              
+          myTabuleiro.cabeEstaPeca(myPeca3)== 0 )  {
+                document.getElementById("mensagem").innerHTML = "Fim de Jogo";
+                return;
+      }
+
+
+       switch(i) {
+          case 1:
+            myPeca1.selecionada = 1;
+            myPeca2.selecionada = 0;
+            myPeca3.selecionada = 0;
+            nroPeca = 1
+            myPeca = myPeca1;
+            myPeca1.eliminada   = (myTabuleiro.cabeEstaPeca(myPeca1)== 0) ;
+            document.getElementById("mensagem").innerHTML = "peça 1 com ["+ myTabuleiro.cabeEstaPeca(myPeca) + "] opções";
+            document.getElementById("tabuleiro").innerHTML = myTabuleiro.displayTabuleiro();
+            displayTabuleiroPeca(0,0);
+            
+            break;
+          case 2:
+            myPeca1.selecionada = 0;
+            myPeca2.selecionada = 1;
+            myPeca3.selecionada = 0;
+            nroPeca = 2;
+            myPeca = myPeca2;
+            myPeca2.eliminada   = (myTabuleiro.cabeEstaPeca(myPeca2)== 0) ;
+            document.getElementById("mensagem").innerHTML = "peça 2 com ["+ myTabuleiro.cabeEstaPeca(myPeca) + "] opções";
+            document.getElementById("tabuleiro").innerHTML = myTabuleiro.displayTabuleiro();
+             displayTabuleiroPeca(0,0);
+            break;
+          case 3:
+            myPeca1.selecionada = 0;
+            myPeca2.selecionada = 0;
+            myPeca3.selecionada = 1;
+            myPeca = myPeca3;
+            nroPeca = 3;
+            myPeca3.eliminada   = (myTabuleiro.cabeEstaPeca(myPeca3)== 0) ;
+            document.getElementById("mensagem").innerHTML = "peça 3 com ["+ myTabuleiro.cabeEstaPeca(myPeca) + "] opções";
+            document.getElementById("tabuleiro").innerHTML = myTabuleiro.displayTabuleiro();
+            displayTabuleiroPeca(0,0);
+
+            break;
+          default:
+            myPeca1.selecionada = 0;
+            myPeca2.selecionada = 0;
+            myPeca3.selecionada = 0;
+            nroPeca = 0;
+            document.getElementById("mensagem").innerHTML = "sem peça";
+            break;
+
+         }
+         document.getElementById("peca1").innerHTML = myPeca1.displayPeca();
+         document.getElementById("peca2").innerHTML = myPeca2.displayPeca();
+         document.getElementById("peca3").innerHTML = myPeca3.displayPeca();
+  }
+  
+   
+</script>
+</body>
+</html>
